@@ -1,3 +1,35 @@
+//cannot predect 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdint.h>
+
+int algo1() { return rand() % 1000; }
+int algo2() { return (rand() * rand()) % 5000; }
+int algo3() { return (rand() ^ (rand() << 5)) % 9999; }
+int algo4() { return (rand() + clock()) % 7777; }
+
+int main() {
+    srand(time(NULL) ^ (uintptr_t)&main ^ clock());
+
+    int (*logic[4])() = { algo1, algo2, algo3, algo4 };
+
+    for (int i = 0; i < 10; i++) {
+        int swapA = rand() % 4;
+        int swapB = rand() % 4;
+
+        int (*temp)() = logic[swapA];
+        logic[swapA] = logic[swapB];
+        logic[swapB] = temp;
+
+        int pick = rand() % 4;
+        int value = logic[pick]();
+
+        printf("%d\n", value);
+    }
+
+    return 0;
+}
 //extreme unpredectable number 
 #include <stdio.h>
 #include <stdlib.h>
