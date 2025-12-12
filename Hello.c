@@ -1,3 +1,30 @@
+//be unpredectable 
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<time.h>
+int main(void){
+    srand(time(0)) ;
+    int  number =  rand() % 10 ;
+    char buffer[100] ;
+    for(;;){
+        printf("Guess the number :") ;
+        fgets(buffer,  sizeof(buffer),stdin) ;
+        int int_number = atoi(buffer) ;
+        if (int_number == number){
+
+            printf ("You predected ~!\n") ;
+        }else if (int_number <  number){
+
+
+            printf ("You guess too low! \n") ;
+        }else{
+
+            printf("You guess too high !\n") ;
+        }
+    }
+    return 0 ;
+//another simple example
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
