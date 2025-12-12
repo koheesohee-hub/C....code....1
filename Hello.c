@@ -1,3 +1,22 @@
+//extreme unpredectable number 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+#include <stdint.h>
+
+int main() {
+    int x, y;
+    unsigned long t = (unsigned long)time(NULL);
+    unsigned long addr1 = (uintptr_t)&x;
+    unsigned long addr2 = (uintptr_t)&y;
+    unsigned long pid = (unsigned long)getpid();
+    unsigned long seed = t ^ addr1 ^ addr2 ^ pid;
+    srand(seed);
+    int unpredictable = (rand() % 1000) + (rand() % 500) * 2 - (rand() % 200);
+    printf("Extreme unpredictable number: %d\n", unpredictable);
+    return 0;
+}
 //be unpredectable 
 #include<stdio.h>
 #include<string.h>
